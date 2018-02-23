@@ -118,14 +118,13 @@ Use _.groupBy to organize the baked goods by type.
 
 var query7 = _.groupBy(bakedGoods,"type");
 
-console.log('Grouped by type:', query7);
+var comee = _.template("<% print(name + '... $' + price); %>");
+
 var printMenu = function(foodtype) {
-  _.each(foodtype,function(foodlist) {
-    console.log(foodlist[0].type);
-    _.each(foodlist, function(food) {
-      console.log(food.name + ' ... $' + food.price);
+  _.each(foodtype,function(typelist) {
+    console.log(typelist[0].type);
+    console.log(comee(typelist));
     });
-  });
 };
 printMenu(query7);
 
@@ -163,3 +162,7 @@ rendering process.
 Use _.template to render the price lines of the menu (Carrot ... $3.49).
 
 ===================== */
+var comee = _.template("<% print(name + '... $' + price); %>");
+_.each(bakedGoods,function(omg){
+  console.log(comee({name:omg.name,price:omg.price}));
+});
